@@ -1,0 +1,174 @@
+1. Handling Drop Down
+code:- 
+package test_prac1; 
+import org.openqa.selenium.By; 
+import org.openqa.selenium.WebDriver; 
+import org.openqa.selenium.firefox.FirefoxDriver; 
+import org.openqa.selenium.firefox.FirefoxOptions; 
+import org.openqa.selenium.support.ui.Select; 
+public class selectmethod { 
+ 
+public static void main(String[] args) { 
+System.setProperty("webdriver.gecko.driver", 
+"C:\\Users\\admin\\Downloads\\testing_jar\\geckodriver.exe"); 
+ 
+FirefoxOptions options = new FirefoxOptions(); 
+options.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe"); 
+WebDriver driver = new FirefoxDriver(options); 
+driver.get("https://www.facebook.com/r.php?entry_point=login"); 
+Select month=new Select(driver.findElement(By.id("month"))); 
+month.selectByIndex(9); 
+//month.deselectByVisibleText("Sep"); 
+ 
+} 
+} 
+
+
+2.List Boxes
+code:-
+package testing1; 
+import java.util.List; 
+import org.openqa.selenium.By; 
+import org.openqa.selenium.WebDriver; 
+import org.openqa.selenium.firefox.FirefoxDriver; 
+import org.openqa.selenium.firefox.FirefoxOptions; 
+import org.openqa.selenium.WebElement; 
+public class listbox { 
+public static void main(String[] args) throws InterruptedException { 
+// TODO Auto-generated method stub 
+System.setProperty("webdriver.gecko.driver", 
+"C:\\Users\\aleen\\Downloads\\testingjar\\geckodriver.exe"); 
+FirefoxOptions options = new FirefoxOptions(); 
+options.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe"); 
+WebDriver driver = new FirefoxDriver(options); 
+ 
+driver.get("https://www.facebook.com/r.php?entry_point=login"); 
+ 
+ 
+List<WebElement> gender=driver.findElements(By.name("sex")); 
+ 
+ 
+int cnt=gender.size(); 
+System.out.println(cnt); 
+ 
+for(int i=0;i<cnt;i++) { 
+String text=gender.get(i).getText(); 
+System.out.println(text); 
+gender.get(i).click(); 
+Thread.sleep(2000); 
+} 
+}
+}
+
+
+3.Command Button
+code:-
+package testing1; 
+import org.openqa.selenium.By; 
+import org.openqa.selenium.WebDriver; 
+import org.openqa.selenium.WebElement; 
+import org.openqa.selenium.firefox.FirefoxDriver; 
+import org.openqa.selenium.firefox.FirefoxOptions; 
+public class commandbutton { 
+public static void main(String[] args) { 
+System.setProperty("webdriver.gecko.driver", 
+"C:\\Users\\aleen\\Downloads\\testingjar\\geckodriver.exe"); 
+ 
+FirefoxOptions options = new FirefoxOptions(); 
+options.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe"); 
+WebDriver driver = new FirefoxDriver(options); 
+ 
+driver.get("https://www.facebook.com/"); 
+ 
+WebElement email = driver.findElement(By.id("email")); 
+WebElement pass = driver.findElement(By.id("pass")); 
+ 
+WebElement loginBtn = driver.findElement(By.name("login")); 
+ 
+email.sendKeys("abc@gmail.com"); 
+pass.sendKeys("password123"); 
+ 
+// click the command button 
+loginBtn.click(); 
+ 
+System.out.println("Command button clicked successfully!"); 
+driver.quit(); 
+ 
+} 
+}
+
+
+
+4.Wait Command
+code:-
+package testing1; 
+import org.openqa.selenium.By; 
+import org.openqa.selenium.WebDriver; 
+import org.openqa.selenium.WebElement; 
+import org.openqa.selenium.firefox.FirefoxDriver; 
+import org.openqa.selenium.firefox.FirefoxOptions; 
+ 
+import java.time.Duration; 
+public class waitcom { 
+public static void main(String[] args) { 
+System.setProperty("webdriver.gecko.driver", 
+"C:\\Users\\aleen\\Downloads\\testingjar\\geckodriver.exe"); 
+FirefoxOptions options = new FirefoxOptions(); 
+options.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe"); 
+ 
+WebDriver driver = new FirefoxDriver(options); 
+driver.manage().window().maximize(); 
+driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); 
+driver.get("https://www.facebook.com/"); 
+WebElement emailField = driver.findElement(By.id("email")); 
+emailField.sendKeys("example@gmail.com"); 
+ 
+WebElement passwordField = driver.findElement(By.id("pass")); 
+passwordField.sendKeys("mypassword"); 
+WebElement loginBtn = driver.findElement(By.name("login")); 
+loginBtn.click(); 
+System.out.println("Login button clicked successfully!");
+}
+}
+
+
+5.Radio button & test boxes
+code:- 
+radio.html
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta charset="UTF-8"> 
+<title>radio button</title> 
+</head> 
+<body> 
+<input type="radio" name="country" value="c1">India<br> 
+<input type="radio" name="country" value="c2">China<br> 
+<input type="radio" name="country" value="c3">Nepal<br><br>
+<input type="radio" name="color" value="a1">Green<br> 
+<input type="radio" name="color" value="a2">Yellow<br> 
+<input type="radio" name="color" value="a3">Red<br> 
+</body> 
+</html>
+
+
+java code:-
+package test_prac1; 
+import org.openqa.selenium.By; 
+import org.openqa.selenium.WebDriver; 
+import org.openqa.selenium.firefox.FirefoxDriver; 
+import org.openqa.selenium.firefox.FirefoxOptions; 
+public class radioclass { 
+ 
+public static void main(String[] args) { 
+System.setProperty("webdriver.gecko.driver", 
+"C:\\Users\\admin\\Downloads\\testing_jar\\geckodriver.exe"); 
+FirefoxOptions options = new FirefoxOptions(); 
+options.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe"); 
+WebDriver driver = new FirefoxDriver(options); 
+driver.get("file:///C:/Users/admin/eclipse- 
+workspace/STQA/test_prac1/src/test_prac1/radiob.html"); 
+driver.findElement(By.xpath("/html/body/input[4]")).click(); 
+} 
+}
+
